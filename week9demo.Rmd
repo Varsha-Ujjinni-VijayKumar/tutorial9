@@ -30,6 +30,15 @@ header-includes:
 - \pagestyle{fancy}
 ---
 
+```{r libraries, echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(readr)
+library(lubridate)
+library(ggplot2)
+library(bookdown)
+library(knitr)
+```
+
 \clearpage
 
 # Section 1
@@ -37,7 +46,24 @@ header-includes:
 
 \clearpage
 
-# Section 2
+# Section 2 : Sexual Assault
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+crime <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019 (1).csv")
+```
+
+In the past 10 years, there have been 5 categories of cases of sexual harassment. From Table \ref(tab:tableA30) we know that indecent assault was the most frequently reported case with a total of 28783 cases. In addition, rape became the second most frequent case with 25007 cases. While cases of child abuse exceed incest cases, and other sexual cases.
+
+
+```{r tableA30, echo=FALSE, warning=FALSE, message=FALSE}
+crimesexual <-crime %>% filter(`Offence Subdivision`== "A30 Sexual offences")
+crimesexual %>% select(-c(`Year ending`)) %>%
+  group_by(`Offence Subgroup`) %>%
+    summarise(total=sum(`Incidents Recorded`)) %>%
+  arrange(desc(total)) %>%
+  kable(caption = "Total case of Sexual Offences from 2010-2019")%>%
+  kableExtra::kable_styling(latex_options = "hold_position")
+```
 
 
 \clearpage
