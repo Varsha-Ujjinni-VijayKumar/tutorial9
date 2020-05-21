@@ -1,6 +1,6 @@
 ---
 title: "Tutorial 9"
-author: "XXXX"
+author: "Varsha, Putu"
 output:
   pdf_document:
     citation_package: natbib
@@ -48,6 +48,13 @@ library(knitr)
 
 # Section 2 : Sexual Assault
 
+Sexual offences occur when someone does not consent to a sexual act or acts. In cases involving children or people with cognitive impairments, consent may not be relevant. Sexual offences can refer to a broad range of sexual behaviours that make the victim feel uncomfortable, frightened or threatened including: 
+-rape 
+-sexual touching 
+-sexual assault 
+-child sexual abuse 
+@Sexualof51:online
+
 ```{r echo=FALSE, warning=FALSE, message=FALSE}
 crime <- read_csv("Data_Tables_Criminal_Incidents_Visualisation_Year_Ending_December_2019 (1).csv")
 ```
@@ -61,7 +68,7 @@ crimesexual %>% select(-c(`Year ending`)) %>%
   group_by(`Offence Subgroup`) %>%
     summarise(total=sum(`Incidents Recorded`)) %>%
   arrange(desc(total)) %>%
-  kable(caption = "Total case of Sexual Offences from 2010-2019")%>%
+  kable(caption = "Total case of Sexual Offences from 2010-2019") %>%
   kableExtra::kable_styling(latex_options = "hold_position")
 ```
 
