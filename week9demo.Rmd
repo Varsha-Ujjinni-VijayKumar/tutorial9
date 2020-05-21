@@ -65,6 +65,18 @@ crimesexual %>% select(-c(`Year ending`)) %>%
   kableExtra::kable_styling(latex_options = "hold_position")
 ```
 
+To see the development of cases in the last 10 years, a graph has been presented. From figure \ref(fig:plotA30) in general, there is an increase in cases each year. Incident assault increased sharply and reached a peak around 2016 and decreased gradually. Significant increase was also experienced by rape cases which reached their peak in 2019.
+Sexual violence against children increases slowly while other violence overtakes incest at the end of 2016 and increases significantly until 2019.
+
+```{r plotA30, echo=FALSE, warning=FALSE, message=FALSE, fig.cap="Graph of incident recorded of sexual assault over time"}
+
+crimesexual %>% ggplot(aes(x= Year,
+                     y=`Incidents Recorded`,
+                     colour = `Offence Subgroup`)) +
+  geom_line() +
+  geom_point()+
+  theme(legend.position = "bottom")
+```
 
 \clearpage
 
